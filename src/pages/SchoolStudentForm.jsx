@@ -229,7 +229,7 @@ const SchoolStudentForm = () => {
               <div style={{ ...styles.formGroup, display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <img
                   src={photoPreview}
-                  alt="Uploaded Photo Preview"
+                  alt="Student preview"
                   style={styles.photoPreview}
                 />
                 <button
@@ -290,76 +290,76 @@ const styles = {
     opacity: 0.3,
     zIndex: 0
   },
-content: {
-  position: 'relative',
-  zIndex: 1
-},
-header: {
-  textAlign: 'center',
-  color: '#3f2b96',
-  marginBottom: '20px',
-  textShadow: '1px 1px 2px rgba(0,0,0,0.1)'
-},
-form: {
-  display: 'flex',
-  flexDirection: 'column'
-},
-formGroup: {
-  marginBottom: '15px'
-},
-label: {
-  display: 'block',
-  marginBottom: '8px',
-  fontWeight: 'bold',
-  color: '#333'
-},
-input: {
-  width: '100%',
-  padding: '10px',
-  fontSize: '16px',
-  border: '1px solid #ccc',
-  borderRadius: '8px',
-  boxSizing: 'border-box',
-  backgroundColor: 'rgba(255, 255, 255, 0.8)'
-},
-submitButton: {
-  backgroundColor: '#4CAF50',
-  color: '#fff',
-  padding: '12px 25px',
-  border: 'none',
-  borderRadius: '8px',
-  cursor: 'pointer',
-  fontSize: '16px',
-  width: '100%',
-  marginTop: '10px',
-  fontWeight: 'bold',
-  transition: 'background-color 0.3s',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-},
-photoPreview: {
-  width: '120px',
-  height: '120px',
-  borderRadius: '50%',
-  border: '2px solid #4CAF50',
-  objectFit: 'cover',
-  backgroundColor: '#f0f0f0'
-},
-deleteButton: {
-  backgroundColor: '#ff4d4f',
-  color: '#fff',
-  border: 'none',
-  borderRadius: '50%',
-  width: '30px',
-  height: '30px',
-  cursor: 'pointer',
-  fontSize: '18px',
-  lineHeight: '0',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-  transition: 'background-color 0.3s'
-}
+  content: {
+    position: 'relative',
+    zIndex: 1
+  },
+  header: {
+    textAlign: 'center',
+    color: '#3f2b96',
+    marginBottom: '20px',
+    textShadow: '1px 1px 2px rgba(0,0,0,0.1)'
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  formGroup: {
+    marginBottom: '15px'
+  },
+  label: {
+    display: 'block',
+    marginBottom: '8px',
+    fontWeight: 'bold',
+    color: '#333'
+  },
+  input: {
+    width: '100%',
+    padding: '10px',
+    fontSize: '16px',
+    border: '1px solid #ccc',
+    borderRadius: '8px',
+    boxSizing: 'border-box',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)'
+  },
+  submitButton: {
+    backgroundColor: '#4CAF50',
+    color: '#fff',
+    padding: '12px 25px',
+    border: 'none',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    fontSize: '16px',
+    width: '100%',
+    marginTop: '10px',
+    fontWeight: 'bold',
+    transition: 'background-color 0.3s',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+  },
+  photoPreview: {
+    width: '120px',
+    height: '120px',
+    borderRadius: '50%',
+    border: '2px solid #4CAF50',
+    objectFit: 'cover',
+    backgroundColor: '#f0f0f0'
+  },
+  deleteButton: {
+    backgroundColor: '#ff4d4f',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '50%',
+    width: '30px',
+    height: '30px',
+    cursor: 'pointer',
+    fontSize: '18px',
+    lineHeight: '0',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+    transition: 'background-color 0.3s'
+  }
 };
 
 export default SchoolStudentForm;
