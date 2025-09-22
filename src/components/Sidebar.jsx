@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-// import "../components/academic-dashboard.css";
 
 function Sidebar() {
   const location = useLocation();
@@ -23,9 +22,9 @@ function Sidebar() {
         position: "fixed",
         top: 0,
         left: 0,
-        width: "240px", // little wider
+        width: "240px",
         height: "100vh",
-        background: "#f9fafb", // lighter background
+        background: "#f9fafb",
         padding: "1rem 0",
         boxShadow: "2px 0 5px rgba(0,0,0,0.1)",
         overflowY: "auto",
@@ -33,15 +32,20 @@ function Sidebar() {
         flexDirection: "column",
       }}
     >
-      <h3
+      {/* ✅ Make heading clickable */}
+      <Link
+        to="/"
         style={{
           margin: "0 1rem 1rem",
           fontSize: "22px",
           color: "#2563eb",
+          fontWeight: "bold",
+          textDecoration: "none",
+          display: "inline-block",
         }}
       >
         Portals
-      </h3>
+      </Link>
 
       <ul
         style={{
@@ -56,24 +60,24 @@ function Sidebar() {
             <li
               key={item.to}
               style={{
-                borderBottom: "1px solid #e5e7eb", // subtle separator line
+                borderBottom: "1px solid #e5e7eb",
               }}
             >
               <Link
                 to={item.to}
                 style={{
                   display: "block",
-                  padding: "14px 20px", // even padding
-                  textDecoration: "none", // no underline
-                  fontSize: "18px", // bigger text
+                  padding: "14px 20px",
+                  textDecoration: "none",
+                  fontSize: "18px",
                   fontWeight: 500,
                   color: isActive ? "#1e40af" : "#374151",
                   background: isActive ? "#e0e7ff" : "transparent",
                   transition: "background 0.3s, color 0.3s",
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.background = "#e0e7ff"; // hover background
-                  e.target.style.color = "#1e40af"; // hover color
+                  e.target.style.background = "#e0e7ff";
+                  e.target.style.color = "#1e40af";
                 }}
                 onMouseLeave={(e) => {
                   e.target.style.background = isActive ? "#e0e7ff" : "transparent";
