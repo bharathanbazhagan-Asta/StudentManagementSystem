@@ -1,0 +1,193 @@
+/* Body */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #dbeafe, #f9fafb);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding-top: 5%;
+  margin-right: -10%;
+}
+
+/* Form box */
+.form-box {
+  max-width: 600px;
+  width: 550px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 15px;
+
+  /* Background image + semi-transparent overlay */
+  background: 
+    linear-gradient(
+      rgba(255, 255, 255, 0.6),  /* white 40% opacity overlay */
+      rgba(255, 255, 255, 0.6)
+    ),
+    url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1500&q=80"); 
+  background-size: cover;
+  background-position: center;
+
+  /* Shadow + animation */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 1s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+    color: #ff6347;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Heading */
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 28px;
+  color: #2563eb;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+  color: #374151;
+}
+
+.required {
+  color: #ff4500;
+  font-weight: bold;
+  animation: pulse 1.5s infinite;
+}
+
+/* Inputs */
+.form-box input,
+.form-box select,
+.form-box textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-box input:focus,
+.form-box select:focus,
+.form-box textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+  outline: none;
+}
+
+.form-box input[type="file"] {
+  border: none;
+}
+
+/* Button */
+.form-box button {
+  margin-top: 20px;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.form-box button:hover {
+  background: #1e40af;
+  transform: scale(1.03);
+}
+
+/* Photo preview */
+.form-box img#preview {
+  margin-top: 12px;
+  width: 100%;
+  max-height: 220px;
+  border: 2px dashed #93c5fd;
+  border-radius: 10px;
+  display: none;
+  object-fit: cover;
+  animation: zoomIn 0.6s ease;
+}
+
+/* Success message */
+.success {
+  display: none;
+  margin-top: 15px;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  background: #dcfce7;
+  color: #166534;
+  font-weight: bold;
+  font-size: 18px;
+  animation: fadeIn 1s ease;
+}
+
+/* Consent box */
+.consent-box {
+  margin-top: 15px;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  text-align: justify;
+  font-size: 15px;
+}
+
+.consent-box h4 {
+  margin-bottom: 10px;
+  font-size: 17px;
+  color: #2563eb;
+}
+
+.consent-box label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.consent-box input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}

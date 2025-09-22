@@ -1,0 +1,104 @@
+/* ===== Main Container ===== */
+.academics-content {
+  padding: 20px;
+  background-color: #f5f7fa;
+  min-height: calc(100vh - 60px);
+  max-width: 1200px;          /* FIXED width */
+  width: 100%;
+  margin: 0 auto;             /* center horizontally */
+  overflow-y: auto;
+}
+
+/* ===== White Card Sections ===== */
+.academics-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Give fixed height for all sections so layout does not “jump” */
+.fixed-section {
+  min-height: 250px;          /* ADJUSTABLE fixed height */
+}
+
+/* ===== Titles ===== */
+.academics-card h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+/* ===== Buttons ===== */
+.academics-btn {
+  display: inline-block;
+  margin: 5px 10px 10px 0;
+  padding: 8px 16px;
+  background: #0052cc;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.academics-btn:hover {
+  background: #003d99;
+}
+
+/* ===== Inputs, Select, Textarea ===== */
+.academics-input,
+.academics-select,
+.academics-textarea {
+  display: block;
+  margin: 10px 0;
+  padding: 10px 12px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.academics-input:focus,
+.academics-select:focus,
+.academics-textarea:focus {
+  border-color: #0052cc;
+}
+
+/* ===== Table ===== */
+.academics-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.academics-table th,
+.academics-table td {
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.academics-table th {
+  background: #f0f4f8;
+  font-weight: 600;
+}
+
+/* ===== Lists (Events, Circulars, etc.) ===== */
+.academics-list {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.academics-list li {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #444;
+}

@@ -1,0 +1,149 @@
+.student-fees-container {
+  background: #fff; 
+  padding: 30px; 
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  width: 100%; 
+  max-width: 700px;
+  animation: fadeIn 1s ease-in-out;
+  margin: 20px auto;
+}
+
+@keyframes fadeIn { 
+  from { opacity: 0; transform: translateY(40px); } 
+  to { opacity: 1; transform: translateY(0); } 
+}
+
+.student-fees-container h1 { 
+  text-align: center; 
+  color: #444; 
+  margin-bottom: 20px; 
+}
+
+.student-fees-container label { 
+  display: block; 
+  margin: 10px 0 5px; 
+  font-weight: bold; 
+}
+
+.student-fees-container select, 
+.student-fees-container input, 
+.student-fees-container button {
+  width: 100%; 
+  padding: 12px; 
+  border: 1px solid #ccc; 
+  border-radius: 8px; 
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.student-fees-container button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: all 0.3s;
+}
+
+.student-fees-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.student-fees-container .summary {
+  background: #f7f7f7; 
+  padding: 15px; 
+  border-radius: 10px; 
+  margin-top: 15px;
+}
+
+.student-fees-container .success { 
+  color: green; 
+  font-weight: bold; 
+  margin-top: 10px; 
+  text-align: center; 
+  padding: 10px;
+  background: #f0fff0;
+  border-radius: 5px;
+}
+
+.student-fees-container .error { 
+  color: red; 
+  font-weight: bold; 
+  margin-top: 10px; 
+  text-align: center; 
+  padding: 10px;
+  background: #fff0f0;
+  border-radius: 5px;
+}
+
+.student-fees-container #groupBox {
+  margin-bottom: 15px;
+}
+
+/* Payment method cards */
+.student-fees-container .payment-methods {
+  display: flex; 
+  gap: 15px; 
+  margin-bottom: 15px; 
+  justify-content: center; 
+  flex-wrap: wrap;
+}
+
+.student-fees-container .method-card {
+  border: 2px solid #ddd; 
+  border-radius: 12px;
+  padding: 10px; 
+  width: 120px; 
+  text-align: center;
+  cursor: pointer; 
+  transition: 0.3s; 
+  background: #fafafa;
+}
+
+.student-fees-container .method-card img {
+  width: 50px; 
+  height: 50px; 
+  object-fit: contain; 
+  margin-bottom: 5px;
+}
+
+.student-fees-container .method-card input { 
+  display: none; 
+}
+
+.student-fees-container .method-card:hover { 
+  border-color: #667eea; 
+  background: #f0f0ff; 
+}
+
+.student-fees-container .method-card.selected { 
+  border-color: #764ba2; 
+  background: #eae6ff; 
+  box-shadow: 0 0 10px rgba(118, 75, 162, 0.3);
+}
+
+/* Fix for UPI icon display */
+.student-fees-container .method-card img[alt="UPI"] {
+  object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .student-fees-container {
+    padding: 20px;
+  }
+  
+  .student-fees-container .payment-methods {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .student-fees-container .method-card {
+    width: 100%;
+    max-width: 200px;
+  }
+}

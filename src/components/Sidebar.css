@@ -1,0 +1,107 @@
+/* Sidebar.css */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: #f9fafb;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+/* Collapsed and Expanded width */
+.sidebar.expanded {
+  width: 240px;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* Heading */
+.sidebar h3 {
+  margin: 1rem;
+  font-size: 22px;
+  color: #2563eb;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.3s ease, font-size 0.3s ease;
+}
+
+.sidebar.collapsed h3 {
+  opacity: 0;
+  font-size: 0;
+}
+
+/* List styles */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Link styles */
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 20px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: #374151;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+  background: #f1f5f9;
+}
+
+.sidebar a.active {
+  color: #1e40af;
+  background: #e0e7ff;
+}
+
+/* Collapsed link adjustments */
+.sidebar.collapsed a {
+  justify-content: center;
+  gap: 0;
+}
+
+/* Icon styles */
+.sidebar .icon {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed .icon {
+  transform: scale(1.1);
+}
+
+/* Toggle button */
+.sidebar-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  transform: rotate(5deg) scale(1.1);
+}

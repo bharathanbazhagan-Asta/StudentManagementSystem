@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Fees Payment</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+    body{
+      background:linear-gradient(135deg,#6a11cb,#2575fc);
+      min-height:100vh;display:flex;align-items:center;justify-content:center;
+    }
+    .container{
+      width:500px;background:#fff;padding:25px 30px;border-radius:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.25);animation:fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+    .container h2{text-align:center;margin-bottom:20px;color:#333;}
+    .form-group{margin-bottom:15px;animation:slideUp 0.6s;}
+    @keyframes slideUp{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+    .form-group label{display:block;margin-bottom:6px;font-weight:600;}
+    .form-group input,.form-group select{
+      width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;transition:0.3s;
+    }
+    .form-group input:focus,.form-group select:focus{border-color:#2575fc;box-shadow:0 0 8px rgba(37,117,252,0.3);outline:none;}
+    .payment-methods{display:flex;justify-content:space-between;margin:15px 0;}
+    .method{
+      flex:1;margin:0 5px;padding:10px;text-align:center;
+      border:2px solid #ccc;border-radius:10px;cursor:pointer;transition:0.3s;
+    }
+    .method:hover{border-color:#2575fc;transform:scale(1.05);}
+    .method.active{border-color:#6a11cb;background:#f0f0ff;}
+    button{
+      width:100%;padding:12px;border:none;border-radius:10px;
+      background:linear-gradient(135deg,#6a11cb,#2575fc);
+      color:#fff;font-size:16px;font-weight:bold;cursor:pointer;transition:transform 0.2s;
+    }
+    button:hover{transform:scale(1.05);}
+    /* Payment input fields */
+    .payment-fields{display:none;margin-top:10px;animation:fadeIn 0.8s;}
+    /* Receipt */
+    .receipt{
+      display:none;background:#fff;margin-top:20px;padding:20px;
+      border-radius:12px;box-shadow:0 6px 15px rgba(0,0,0,0.15);
+      animation:slideUp 0.8s ease-in-out;
+    }
+    .receipt h3{text-align:center;margin-bottom:15px;color:#333;}
+    .receipt p{margin:5px 0;font-size:14px;}
+    .receipt strong{color:#2575fc;}
+    .success{text-align:center;margin-top:15px;color:green;font-weight:bold;display:none;animation:fadeIn 1s;}
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Student Fees Payment</h2>
+  <form id="paymentForm">
+    <div class="form-group">
+      <label>Student Name</label>
+      <input type="text" id="studentName" required>
+    </div>
+    <div class="form-group">
+      <label>Select Standard</label>
+      <select id="classSelect" required>
+        <option value="">-- Select Standard --</option>
+        <option>Pre-KG</option>
+        <option>LKG</option>
+        <option>UKG</option>
+        <option>Std I</option><option>Std II</option><option>Std III</option><option>Std IV</option>
+        <option>Std V</option><option>Std VI</option><option>Std VII</option><option>Std VIII</option>
+        <option>Std IX</option><option>Std X</option>
+        <option value="11">Std XI</option>
+        <option value="12">Std XII</option>
+      </select>
+    </div>
+    <div class="form-group" id="groupDiv" style="display:none;">
+      <label>Group</label>
+      <select id="groupSelect">
+        <option value="">-- Select Group --</option>
+        <option value="Bio-Math">Biology - Math</option>
+        <option value="CS-Math">Computer Science - Math</option>
+        <option value="Commerce">Commerce - Accountancy</option>
+        <option value="Humanities">Humanities</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Total Fees (₹)</label>
+      <input type="number" id="totalFees" readonly>
+    </div>
+    <div class="form-group">
+      <label>Paid Amount (₹)</label>
+      <input type="number" id="paidAmount" required>
+    </div>
+    <div class="form-group">
+      <label>Remaining Balance (₹)</label>
+      <input type="number" id="balanceAmount" readonly>
+    </div>
+    <label>Payment Method</label>
+    <div class="payment-methods">
+      <div class="method" onclick="selectMethod(this,'upiFields')">UPI</div>
+      <div class="method" onclick="selectMethod(this,'cardFields')">Card</div>
+      <div class="method" onclick="selectMethod(this,'netFields')">Net Banking</div>
+    </div>
+    <!-- Payment input fields -->
+    <div id="upiFields" class="payment-fields">
+      <label>UPI ID</label>
+      <input type="text" placeholder="example@upi">
+    </div>
+    <div id="cardFields" class="payment-fields">
+      <label>Card Number</label>
+      <input type="text" maxlength="16" placeholder="XXXX-XXXX-XXXX-XXXX">
+      <label>Expiry</label>
+      <input type="month">
+      <label>CVV</label>
+      <input type="password" maxlength="3">
+    </div>
+    <div id="netFields" class="payment-fields">
+      <label>Bank Name</label>
+      <input type="text" placeholder="Enter Bank Name">
+      <label>Account Number</label>
+      <input type="text" placeholder="XXXXXXX">
+    </div>
+    <button type="submit">Pay Now</button>
+    <div class="success" id="successMsg">✅ Payment Successful!</div>
+  </form>
+
+  <!-- Receipt -->
+  <div class="receipt" id="receipt">
+    <h3>Payment Receipt</h3>
+    <p><strong>Student:</strong> <span id="rName"></span></p>
+    <p><strong>Standard:</strong> <span id="rClass"></span></p>
+    <p><strong>Group:</strong> <span id="rGroup"></span></p>
+    <p><strong>Total Fees:</strong> ₹<span id="rTotal"></span></p>
+    <p><strong>Paid Amount:</strong> ₹<span id="rPaid"></span></p>
+    <p><strong>Remaining Balance:</strong> ₹<span id="rBalance"></span></p>
+    <p><strong>Payment Method:</strong> <span id="rMethod"></span></p>
+    <p><em>Thank you for your payment!</em></p>
+  </div>
+</div>
+
+<script>
+  const classSelect=document.getElementById("classSelect");
+  const groupDiv=document.getElementById("groupDiv");
+  const groupSelect=document.getElementById("groupSelect");
+  const totalFees=document.getElementById("totalFees");
+  const paidAmount=document.getElementById("paidAmount");
+  const balanceAmount=document.getElementById("balanceAmount");
+  const receipt=document.getElementById("receipt");
+  const successMsg=document.getElementById("successMsg");
+
+  const feeStructure={
+    "Pre-KG":8000,"LKG":10000,"UKG":12000,
+    "Std I":15000,"Std II":15000,"Std III":15000,"Std IV":16000,"Std V":16000,
+    "Std VI":16000,"Std VII":17000,"Std VIII":17000,"Std IX":18000,"Std X":18000,
+    "11":{"Bio-Math":25000,"CS-Math":24000,"Commerce":20000,"Humanities":18000},
+    "12":{"Bio-Math":26000,"CS-Math":25000,"Commerce":21000,"Humanities":19000}
+  };
+
+  classSelect.addEventListener("change",()=>{
+    if(classSelect.value==="11"||classSelect.value==="12"){groupDiv.style.display="block";totalFees.value="";}
+    else{groupDiv.style.display="none";totalFees.value=feeStructure[classSelect.value]||"";balanceAmount.value=totalFees.value;}
+  });
+  groupSelect.addEventListener("change",()=>{
+    const cls=classSelect.value;
+    if(cls==="11"||cls==="12"){totalFees.value=feeStructure[cls][groupSelect.value]||"";balanceAmount.value=totalFees.value;}
+  });
+  paidAmount.addEventListener("input",()=>{
+    if(totalFees.value){const bal=totalFees.value-paidAmount.value;balanceAmount.value=bal>=0?bal:0;}
+  });
+
+  function selectMethod(el,fieldId){
+    document.querySelectorAll(".method").forEach(m=>m.classList.remove("active"));
+    el.classList.add("active");
+    document.querySelectorAll(".payment-fields").forEach(f=>f.style.display="none");
+    document.getElementById(fieldId).style.display="block";
+  }
+
+  document.getElementById("paymentForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    const name=document.getElementById("studentName").value;
+    const cls=classSelect.options[classSelect.selectedIndex].text;
+    const grp=(classSelect.value==="11"||classSelect.value==="12")?groupSelect.value:"N/A";
+    const total=totalFees.value;const paid=paidAmount.value;const bal=balanceAmount.value;
+    const method=document.querySelector(".method.active")?.innerText||"Not Selected";
+    if(!total||!paid||method==="Not Selected"){alert("Please complete all fields including payment method.");return;}
+    successMsg.style.display="block";
+    document.getElementById("rName").innerText=name;
+    document.getElementById("rClass").innerText=cls;
+    document.getElementById("rGroup").innerText=grp;
+    document.getElementById("rTotal").innerText=total;
+    document.getElementById("rPaid").innerText=paid;
+    document.getElementById("rBalance").innerText=bal;
+    document.getElementById("rMethod").innerText=method;
+    receipt.style.display="block";
+    setTimeout(()=>successMsg.style.display="none",2000);
+  });
+</script>
+</body>
+</html>
