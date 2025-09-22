@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 
 const SubjectLibraryPage = () => {
   const { classId, subjectId } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [showUploadForm, setShowUploadForm] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
